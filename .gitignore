@@ -1,0 +1,24 @@
+/vendor/
+/node_modules/
+
+# Environment and secrets
+/.env
+/.env.*
+!/\.env.example
+
+# Logs and runtime data
+*.log
+/storage/*.key
+/storage/logs/
+/bootstrap/cache/*.php
+
+# Test and coverage artifacts
+/.phpunit.cache/
+/coverage/
+/build/
+
+# IDE and OS files
+/.idea/
+/.vscode/
+.DS_Store
+Thumbs.db

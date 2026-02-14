@@ -1,0 +1,107 @@
+{
+    "$schema": "vendor/infection/infection/resources/schema.json",
+    "source": {
+        "directories": [
+            "src"
+        ],
+        "excludes": [
+            "Support",
+            "Events",
+            "Exceptions"
+        ]
+    },
+    "logs": {
+        "text": "infection.log",
+        "summary": "infection-summary.log",
+        "json": "infection.json"
+    },
+    "mutators": {
+        "@default": true,
+        // Critical financial comparison operators
+        "GreaterThan": {
+            "settings": {
+                "ignore": []
+            }
+        },
+        "GreaterThanOrEqualTo": {
+            "settings": {
+                "ignore": []
+            }
+        },
+        "LessThan": {
+            "settings": {
+                "ignore": []
+            }
+        },
+        "LessThanOrEqualTo": {
+            "settings": {
+                "ignore": []
+            }
+        },
+        "Identical": {
+            "settings": {
+                "ignore": []
+            }
+        },
+        // Arithmetic operators (critical for financial math)
+        "Plus": {
+            "settings": {
+                "ignore": []
+            }
+        },
+        "Minus": {
+            "settings": {
+                "ignore": []
+            }
+        },
+        "Multiplication": {
+            "settings": {
+                "ignore": []
+            }
+        },
+        // Method call removal (catches missing guard checks)
+        "MethodCallRemoval": {
+            "settings": {
+                "ignore": []
+            }
+        },
+        // Logical operators (catches removed conditions)
+        "LogicalAnd": {
+            "settings": {
+                "ignore": []
+            }
+        },
+        "LogicalOr": {
+            "settings": {
+                "ignore": []
+            }
+        },
+        // Math function mutations
+        "UnwrapCeil": {
+            "settings": {
+                "ignore": []
+            }
+        },
+        // Return value mutations
+        "TrueValue": {
+            "settings": {
+                "ignore": []
+            }
+        },
+        "FalseValue": {
+            "settings": {
+                "ignore": []
+            }
+        },
+        "IntegerNegation": {
+            "settings": {
+                "ignore": []
+            }
+        }
+    },
+    "testFramework": "phpunit",
+    "testFrameworkOptions": "--testsuite=Unit,Schema,Integration",
+    "tmpDir": ".infection",
+    "minMsi": 85,
+    "minCoveredMsi": 90
+}

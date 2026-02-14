@@ -1,0 +1,219 @@
+name: Nightly (Heavy Suite)
+
+on:
+  schedule:
+    - cron: '0 3 * * *' # 3 AM UTC daily
+  workflow_dispatch: {}
+
+jobs:
+  # ─────────────────────────────────────────────
+  # Concurrency tests (MySQL + PostgreSQL)
+  # ─────────────────────────────────────────────
+  concurrency:
+    name: Concurrency (${{ matrix.db }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        db: ['mysql', 'pgsql']
+        include:
+          - db: mysql
+            db_image: 'mysql:8.0'
+            db_port: 3306
+            db_username: root
+            db_password: password
+            health_cmd: 'mysqladmin ping'
+          - db: pgsql
+            db_image: 'postgres:16'
+            db_port: 5432
+            db_username: postgres
+            db_password: password
+            health_cmd: 'pg_isready'
+
+    services:
+      database:
+        image: ${{ matrix.db_image }}
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: testing
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: testing
+        ports:
+          - ${{ matrix.db_port }}:${{ matrix.db_port }}
+        options: >-
+          --health-cmd="${{ matrix.health_cmd }}"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: pdo_mysql, pdo_pgsql, mbstring, json
+
+      - name: Install dependencies
+        run: composer install --no-progress --prefer-dist
+
+      - name: Run concurrency tests
+        run: vendor/bin/phpunit --group=concurrency
+        env:
+          DB_CONNECTION: ${{ matrix.db }}
+          DB_HOST: 127.0.0.1
+          DB_PORT: ${{ matrix.db_port }}
+          DB_DATABASE: testing
+          DB_USERNAME: ${{ matrix.db_username }}
+          DB_PASSWORD: ${{ matrix.db_password }}
+
+  # ─────────────────────────────────────────────
+  # Crash-consistency tests (MySQL + PostgreSQL)
+  # ─────────────────────────────────────────────
+  crash-consistency:
+    name: Crash Consistency (${{ matrix.db }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        db: ['mysql', 'pgsql']
+        include:
+          - db: mysql
+            db_image: 'mysql:8.0'
+            db_port: 3306
+            db_username: root
+            db_password: password
+            health_cmd: 'mysqladmin ping'
+          - db: pgsql
+            db_image: 'postgres:16'
+            db_port: 5432
+            db_username: postgres
+            db_password: password
+            health_cmd: 'pg_isready'
+
+    services:
+      database:
+        image: ${{ matrix.db_image }}
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: testing
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: testing
+        ports:
+          - ${{ matrix.db_port }}:${{ matrix.db_port }}
+        options: >-
+          --health-cmd="${{ matrix.health_cmd }}"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: pdo_mysql, pdo_pgsql, mbstring, json
+
+      - name: Install dependencies
+        run: composer install --no-progress --prefer-dist
+
+      - name: Run crash-consistency tests
+        run: vendor/bin/phpunit --testsuite=CrashConsistency
+        env:
+          DB_CONNECTION: ${{ matrix.db }}
+          DB_HOST: 127.0.0.1
+          DB_PORT: ${{ matrix.db_port }}
+          DB_DATABASE: testing
+          DB_USERNAME: ${{ matrix.db_username }}
+          DB_PASSWORD: ${{ matrix.db_password }}
+
+  # ─────────────────────────────────────────────
+  # Fuzz tests (MySQL + PostgreSQL)
+  # ─────────────────────────────────────────────
+  fuzz:
+    name: Fuzz (${{ matrix.db }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        db: ['mysql', 'pgsql']
+        include:
+          - db: mysql
+            db_image: 'mysql:8.0'
+            db_port: 3306
+            db_username: root
+            db_password: password
+            health_cmd: 'mysqladmin ping'
+          - db: pgsql
+            db_image: 'postgres:16'
+            db_port: 5432
+            db_username: postgres
+            db_password: password
+            health_cmd: 'pg_isready'
+
+    services:
+      database:
+        image: ${{ matrix.db_image }}
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: testing
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: testing
+        ports:
+          - ${{ matrix.db_port }}:${{ matrix.db_port }}
+        options: >-
+          --health-cmd="${{ matrix.health_cmd }}"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: pdo_mysql, pdo_pgsql, mbstring, json
+
+      - name: Install dependencies
+        run: composer install --no-progress --prefer-dist
+
+      - name: Run fuzz tests
+        run: vendor/bin/phpunit --testsuite=Fuzz
+        env:
+          DB_CONNECTION: ${{ matrix.db }}
+          DB_HOST: 127.0.0.1
+          DB_PORT: ${{ matrix.db_port }}
+          DB_DATABASE: testing
+          DB_USERNAME: ${{ matrix.db_username }}
+          DB_PASSWORD: ${{ matrix.db_password }}
+
+  # ─────────────────────────────────────────────
+  # Mutation testing (SQLite, fast)
+  # ─────────────────────────────────────────────
+  mutation:
+    name: Mutation Testing
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: pdo_sqlite, mbstring, json
+          coverage: xdebug
+
+      - name: Install dependencies
+        run: composer install --no-progress --prefer-dist
+
+      - name: Run Infection mutation testing
+        run: vendor/bin/infection --min-msi=85 --min-covered-msi=90 --threads=4
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ':memory:'

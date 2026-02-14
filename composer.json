@@ -1,0 +1,84 @@
+{
+    "name": "moneo/laravel-usage-limiter",
+    "description": "A metric-agnostic, account-level usage metering and enforcement engine for Laravel with atomic concurrency safety, idempotency, and pluggable pricing/enforcement policies.",
+    "keywords": [
+        "laravel",
+        "usage",
+        "limiter",
+        "metering",
+        "billing",
+        "rate-limit",
+        "quota",
+        "enforcement",
+        "prepaid",
+        "postpaid",
+        "saas"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Moneo",
+            "email": "info@moneo.com.tr"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/database": "^11.0|^12.0",
+        "illuminate/support": "^11.0|^12.0",
+        "illuminate/events": "^11.0|^12.0",
+        "illuminate/cache": "^11.0|^12.0",
+        "illuminate/console": "^11.0|^12.0",
+        "illuminate/contracts": "^11.0|^12.0",
+        "illuminate/queue": "^11.0|^12.0"
+    },
+    "require-dev": {
+        "infection/infection": "^0.29",
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.0",
+        "orchestra/testbench": "^9.0|^10.0",
+        "phpunit/phpunit": "^11.0",
+        "symfony/process": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Moneo\\UsageLimiter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Moneo\\UsageLimiter\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Moneo\\UsageLimiter\\UsageLimiterServiceProvider"
+            ],
+            "aliases": {
+                "UsageLimiter": "Moneo\\UsageLimiter\\Support\\UsageLimiterFacade"
+            }
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test:unit": "vendor/bin/phpunit --testsuite=Unit",
+        "test:schema": "vendor/bin/phpunit --testsuite=Schema",
+        "test:integration": "vendor/bin/phpunit --testsuite=Integration",
+        "test:concurrency": "vendor/bin/phpunit --group=concurrency",
+        "test:crash": "vendor/bin/phpunit --testsuite=CrashConsistency",
+        "test:fuzz": "vendor/bin/phpunit --testsuite=Fuzz",
+        "test:coverage": "vendor/bin/phpunit --coverage-html=coverage",
+        "test:mutation": "vendor/bin/infection --min-msi=85 --min-covered-msi=90 --threads=4",
+        "analyse": "vendor/bin/phpstan analyse --level=max src/",
+        "lint": "vendor/bin/pint --test",
+        "lint:fix": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "infection/extension-installer": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
