@@ -4,7 +4,6 @@
 [![Tests](https://img.shields.io/github/actions/workflow/status/moneo/laravel-usage-limiter/tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/moneo/laravel-usage-limiter/actions/workflows/tests.yml)
 [![codecov](https://img.shields.io/codecov/c/github/moneo/laravel-usage-limiter?style=flat-square)](https://codecov.io/gh/moneo/laravel-usage-limiter)
 [![PHPStan Level Max](https://img.shields.io/badge/phpstan-level%20max-brightgreen?style=flat-square)](https://phpstan.org/)
-[![Total Downloads](https://img.shields.io/packagist/dt/moneo/laravel-usage-limiter.svg?style=flat-square)](https://packagist.org/packages/moneo/laravel-usage-limiter)
 [![PHP Version](https://img.shields.io/packagist/php-v/moneo/laravel-usage-limiter.svg?style=flat-square)](https://packagist.org/packages/moneo/laravel-usage-limiter)
 [![Laravel](https://img.shields.io/badge/laravel-11.x%20|%2012.x-red?style=flat-square&logo=laravel)](https://laravel.com)
 [![License](https://img.shields.io/packagist/l/moneo/laravel-usage-limiter.svg?style=flat-square)](LICENSE)

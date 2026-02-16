@@ -44,14 +44,13 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: ':memory:'
 
-      - name: Upload coverage
+      - name: Upload coverage reports to Codecov
         if: matrix.php == '8.3'
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage.xml
           fail_ci_if_error: false
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   # ─────────────────────────────────────────────
   # MySQL tests
