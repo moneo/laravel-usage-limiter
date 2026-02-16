@@ -1,8 +1,41 @@
 # Laravel Usage Limiter
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/moneo/laravel-usage-limiter.svg?style=flat-square)](https://packagist.org/packages/moneo/laravel-usage-limiter)
+[![Tests](https://img.shields.io/github/actions/workflow/status/moneo/laravel-usage-limiter/tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/moneo/laravel-usage-limiter/actions/workflows/tests.yml)
+[![codecov](https://img.shields.io/codecov/c/github/moneo/laravel-usage-limiter?style=flat-square)](https://codecov.io/gh/moneo/laravel-usage-limiter)
+[![PHPStan Level Max](https://img.shields.io/badge/phpstan-level%20max-brightgreen?style=flat-square)](https://phpstan.org/)
+[![Total Downloads](https://img.shields.io/packagist/dt/moneo/laravel-usage-limiter.svg?style=flat-square)](https://packagist.org/packages/moneo/laravel-usage-limiter)
+[![PHP Version](https://img.shields.io/packagist/php-v/moneo/laravel-usage-limiter.svg?style=flat-square)](https://packagist.org/packages/moneo/laravel-usage-limiter)
+[![Laravel](https://img.shields.io/badge/laravel-11.x%20|%2012.x-red?style=flat-square&logo=laravel)](https://laravel.com)
+[![License](https://img.shields.io/packagist/l/moneo/laravel-usage-limiter.svg?style=flat-square)](LICENSE)
+
 **A production grade, metric agnostic usage metering and enforcement engine for Laravel.**
 
 Track any resource. Enforce any limit. Bill any way you want. Built for SaaS teams that need atomic concurrency safety, idempotency guarantees, and pluggable pricing models out of the box.
+
+## Table of Contents
+
+- [Built For](#built-for)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Core Concepts](#core-concepts)
+- [Architecture](#architecture)
+- [Quick Start](#quick-start)
+- [Per-User Usage](#per-user-usage-without-teams-or-workspaces)
+- [Integration Patterns](#integration-patterns)
+- [Raw API](#raw-api)
+- [Database Schema](#database-schema)
+- [Plans and Overrides](#plans-and-overrides)
+- [Pricing Modes](#pricing-modes)
+- [Enforcement Modes](#enforcement-modes)
+- [Idempotency](#idempotency)
+- [Events](#events)
+- [Artisan Commands](#artisan-commands)
+- [Configuration Reference](#configuration-reference)
+- [Extending the Package](#extending-the-package)
+- [Testing](#testing)
+- [License](#license)
 
 ## Built For
 
