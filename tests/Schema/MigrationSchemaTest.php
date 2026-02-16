@@ -303,8 +303,9 @@ class MigrationSchemaTest extends TestCase
 
     public function test_deleting_plan_cascades_to_metric_limits(): void
     {
-        // Enable FK enforcement (SQLite requires this pragma)
-        DB::connection('testing')->statement('PRAGMA foreign_keys = ON');
+        if (DB::connection('testing')->getDriverName() === 'sqlite') {
+            DB::connection('testing')->statement('PRAGMA foreign_keys = ON');
+        }
 
         $plan = Plan::create(['code' => 'cascade_test', 'name' => 'Cascade Test']);
         PlanMetricLimit::create([
@@ -326,8 +327,9 @@ class MigrationSchemaTest extends TestCase
 
     public function test_deleting_account_cascades_to_plan_assignments(): void
     {
-        // Enable FK enforcement (SQLite requires this pragma)
-        DB::connection('testing')->statement('PRAGMA foreign_keys = ON');
+        if (DB::connection('testing')->getDriverName() === 'sqlite') {
+            DB::connection('testing')->statement('PRAGMA foreign_keys = ON');
+        }
 
         $plan = Plan::create(['code' => 'cascade2', 'name' => 'Cascade2']);
         $account = BillingAccount::create(['name' => 'CascadeAcct', 'wallet_balance_cents' => 0, 'is_active' => true]);

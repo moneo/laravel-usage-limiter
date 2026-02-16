@@ -21,12 +21,12 @@ return new class extends Migration
             $table->json('metadata')->nullable();
             $table->timestamps();
 
-            $table->index(['billing_account_id', 'ended_at']);
-            $table->foreign('billing_account_id')
+            $table->index(['billing_account_id', 'ended_at'], 'bapa_account_ended_idx');
+            $table->foreign('billing_account_id', 'bapa_billing_account_id_fk')
                 ->references('id')
                 ->on($prefix.'billing_accounts')
                 ->onDelete('cascade');
-            $table->foreign('plan_id')
+            $table->foreign('plan_id', 'bapa_plan_id_fk')
                 ->references('id')
                 ->on($prefix.'plans')
                 ->onDelete('cascade');

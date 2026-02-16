@@ -31,7 +31,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->index(['billing_account_id', 'metric_code', 'ended_at'], 'bamo_account_metric_ended_idx');
-            $table->foreign('billing_account_id')
+            $table->foreign('billing_account_id', 'bamo_billing_account_id_fk')
                 ->references('id')
                 ->on($prefix.'billing_accounts')
                 ->onDelete('cascade');
