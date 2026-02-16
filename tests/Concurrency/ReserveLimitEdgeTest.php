@@ -60,7 +60,7 @@ class ReserveLimitEdgeTest extends TestCase
         $this->limiter()->currentUsage($account->id, 'api_calls');
 
         $results = ConcurrencyRunner::run(
-            scriptPath: __DIR__ . '/scripts/reserve_worker.php',
+            scriptPath: __DIR__.'/scripts/reserve_worker.php',
             workerCount: 10,
             env: $this->workerEnv($account->id),
         );
@@ -105,7 +105,7 @@ class ReserveLimitEdgeTest extends TestCase
 
         // 5 workers each try to reserve(1), only 2 should succeed
         $results = ConcurrencyRunner::run(
-            scriptPath: __DIR__ . '/scripts/reserve_worker.php',
+            scriptPath: __DIR__.'/scripts/reserve_worker.php',
             workerCount: 5,
             env: $this->workerEnv($account->id),
         );

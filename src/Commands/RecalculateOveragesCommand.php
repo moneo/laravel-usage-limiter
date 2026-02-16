@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Moneo\UsageLimiter\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
 use Moneo\UsageLimiter\Contracts\PlanResolver;
 use Moneo\UsageLimiter\Models\UsageOverage;
 use Moneo\UsageLimiter\Models\UsagePeriodAggregate;

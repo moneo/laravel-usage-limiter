@@ -56,7 +56,7 @@ jobs:
           extensions: pdo_mysql, pdo_pgsql, mbstring, json
 
       - name: Install dependencies
-        run: composer install --no-progress --prefer-dist
+        run: composer update --no-progress --prefer-dist
 
       - name: Run concurrency tests
         run: vendor/bin/phpunit --group=concurrency
@@ -118,7 +118,7 @@ jobs:
           extensions: pdo_mysql, pdo_pgsql, mbstring, json
 
       - name: Install dependencies
-        run: composer install --no-progress --prefer-dist
+        run: composer update --no-progress --prefer-dist
 
       - name: Run crash-consistency tests
         run: vendor/bin/phpunit --testsuite=CrashConsistency
@@ -180,7 +180,7 @@ jobs:
           extensions: pdo_mysql, pdo_pgsql, mbstring, json
 
       - name: Install dependencies
-        run: composer install --no-progress --prefer-dist
+        run: composer update --no-progress --prefer-dist
 
       - name: Run fuzz tests
         run: vendor/bin/phpunit --testsuite=Fuzz
@@ -210,7 +210,7 @@ jobs:
           coverage: xdebug
 
       - name: Install dependencies
-        run: composer install --no-progress --prefer-dist
+        run: composer update --no-progress --prefer-dist
 
       - name: Run Infection mutation testing
         run: vendor/bin/infection --min-msi=85 --min-covered-msi=90 --threads=4

@@ -25,19 +25,19 @@ final class FailpointManager
 
     public static function instance(): self
     {
-        return self::$instance ??= new self();
+        return self::$instance ??= new self;
     }
 
     public static function reset(): void
     {
-        self::$instance = new self();
+        self::$instance = new self;
     }
 
     /**
      * Arm a named failpoint.
      *
-     * @param string $name Named step (e.g. 'reserve.afterAggregateUpdate')
-     * @param \Closure|true $action true = throw RuntimeException, Closure = call custom action
+     * @param  string  $name  Named step (e.g. 'reserve.afterAggregateUpdate')
+     * @param  \Closure|true  $action  true = throw RuntimeException, Closure = call custom action
      */
     public function arm(string $name, \Closure|true $action = true): void
     {

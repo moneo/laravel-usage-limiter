@@ -7,7 +7,6 @@ namespace Moneo\UsageLimiter\Tests\Integration;
 use Moneo\UsageLimiter\Core\UsageLimiter;
 use Moneo\UsageLimiter\DTOs\UsageAttempt;
 use Moneo\UsageLimiter\Exceptions\InsufficientBalanceException;
-use Moneo\UsageLimiter\Models\BillingTransaction;
 use Moneo\UsageLimiter\Models\UsageOverage;
 use Moneo\UsageLimiter\Tests\Concerns\AssertsInvariants;
 use Moneo\UsageLimiter\Tests\Concerns\CreatesTestFixtures;

@@ -10,7 +10,6 @@ use Moneo\UsageLimiter\Core\UsageLimiter;
 use Moneo\UsageLimiter\DTOs\UsageAttempt;
 use Moneo\UsageLimiter\Events\LimitApproaching;
 use Moneo\UsageLimiter\Events\UsageReserved;
-use Moneo\UsageLimiter\Exceptions\InsufficientBalanceException;
 use Moneo\UsageLimiter\Exceptions\UsageLimitExceededException;
 use Moneo\UsageLimiter\Models\UsagePeriodAggregate;
 use Moneo\UsageLimiter\Models\UsageReservation;

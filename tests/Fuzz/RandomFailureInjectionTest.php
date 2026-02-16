@@ -67,7 +67,7 @@ class RandomFailureInjectionTest extends TestCase
         if ($driver === 'sqlite') {
             $this->markTestSkipped(
                 'Fuzz with failure injection + reconcile requires MySQL/PostgreSQL '
-                . '(reconcile uses sumReservationsByStatus which has date format mismatch on SQLite).'
+                .'(reconcile uses sumReservationsByStatus which has date format mismatch on SQLite).'
             );
         }
         $numBatches = 10;
@@ -123,7 +123,7 @@ class RandomFailureInjectionTest extends TestCase
             $this->assertEmpty(
                 $violations,
                 "Invariant violations after batch {$batch} (with failure injection + reconcile): "
-                    . implode('; ', $violations),
+                    .implode('; ', $violations),
             );
         }
     }

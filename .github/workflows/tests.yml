@@ -29,7 +29,7 @@ jobs:
           coverage: xdebug
 
       - name: Install dependencies
-        run: composer install --no-progress --prefer-dist
+        run: composer update --no-progress --prefer-dist
 
       - name: Run Unit + Schema + Integration tests
         run: vendor/bin/phpunit --testsuite=Unit,Schema,Integration
@@ -84,7 +84,7 @@ jobs:
           extensions: pdo_mysql, mbstring, json
 
       - name: Install dependencies
-        run: composer install --no-progress --prefer-dist
+        run: composer update --no-progress --prefer-dist
 
       - name: Run tests on MySQL
         run: vendor/bin/phpunit --testsuite=Unit,Schema,Integration
@@ -127,7 +127,7 @@ jobs:
           extensions: pdo_pgsql, mbstring, json
 
       - name: Install dependencies
-        run: composer install --no-progress --prefer-dist
+        run: composer update --no-progress --prefer-dist
 
       - name: Run tests on PostgreSQL
         run: vendor/bin/phpunit --testsuite=Unit,Schema,Integration
@@ -155,10 +155,10 @@ jobs:
           php-version: '8.3'
 
       - name: Install dependencies
-        run: composer install --no-progress --prefer-dist
+        run: composer update --no-progress --prefer-dist
 
       - name: PHPStan
-        run: vendor/bin/phpstan analyse --level=max src/
+        run: vendor/bin/phpstan analyse --level=max --memory-limit=512M src/
         continue-on-error: true
 
       - name: Laravel Pint

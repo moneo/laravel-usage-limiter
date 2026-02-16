@@ -20,7 +20,7 @@ declare(strict_types=1);
  *   DB_PASSWORD   - database password
  */
 
-require_once __DIR__ . '/../../../vendor/autoload.php';
+require_once __DIR__.'/../../../vendor/autoload.php';
 
 use Moneo\UsageLimiter\Core\UsageLimiter;
 use Moneo\UsageLimiter\DTOs\UsageAttempt;

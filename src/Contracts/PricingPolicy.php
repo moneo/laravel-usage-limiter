@@ -38,7 +38,7 @@ interface PricingPolicy
      * Must be idempotent (keyed by reservationUlid).
      *
      * @param  int  $committedBefore  The committed_usage value BEFORE this reservation was committed.
-     *                                 Captured inside the commit transaction to prevent concurrency errors.
+     *                                Captured inside the commit transaction to prevent concurrency errors.
      */
     public function charge(
         BillingAccount $account,

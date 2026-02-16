@@ -18,10 +18,10 @@ final readonly class ConcurrencyRunner
     /**
      * Run N worker processes in parallel and collect results.
      *
-     * @param string $scriptPath Path to the PHP worker script
-     * @param int $workerCount Number of parallel workers to spawn
-     * @param array<string, string> $env Environment variables passed to each worker
-     * @param int $timeoutSeconds Per-worker timeout
+     * @param  string  $scriptPath  Path to the PHP worker script
+     * @param  int  $workerCount  Number of parallel workers to spawn
+     * @param  array<string, string>  $env  Environment variables passed to each worker
+     * @param  int  $timeoutSeconds  Per-worker timeout
      * @return list<array{exitCode: int, output: string, error: string, parsed: ?array<string, mixed>}>
      */
     public static function run(
@@ -71,7 +71,7 @@ final readonly class ConcurrencyRunner
     /**
      * Count how many workers returned success=true in their JSON output.
      *
-     * @param list<array{exitCode: int, output: string, error: string, parsed: ?array<string, mixed>}> $results
+     * @param  list<array{exitCode: int, output: string, error: string, parsed: ?array<string, mixed>}>  $results
      */
     public static function countSuccesses(array $results): int
     {
@@ -81,7 +81,7 @@ final readonly class ConcurrencyRunner
     /**
      * Count how many workers returned success=false in their JSON output.
      *
-     * @param list<array{exitCode: int, output: string, error: string, parsed: ?array<string, mixed>}> $results
+     * @param  list<array{exitCode: int, output: string, error: string, parsed: ?array<string, mixed>}>  $results
      */
     public static function countFailures(array $results): int
     {

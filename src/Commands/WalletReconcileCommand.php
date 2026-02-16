@@ -79,6 +79,7 @@ class WalletReconcileCommand extends Command
 
                         if ($affected === 0) {
                             $this->warn("  → Skipped correction for account #{$account->id} (balance changed concurrently)");
+
                             continue;
                         }
 

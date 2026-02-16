@@ -65,7 +65,7 @@ final readonly class InvariantChecker
                 $violations[] = "INV-14: reserved_usage={$aggregate->reserved_usage} is negative";
             }
         } elseif ($actualCommitted > 0 || $actualReserved > 0) {
-            $violations[] = "INV-1/2: Reservations exist without aggregate row";
+            $violations[] = 'INV-1/2: Reservations exist without aggregate row';
         }
 
         // INV-4: Wallet matches ledger

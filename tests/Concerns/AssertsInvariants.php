@@ -50,14 +50,14 @@ trait AssertsInvariants
             $actualCommitted,
             $aggregate->committed_usage,
             "INV-1: aggregate.committed_usage ({$aggregate->committed_usage}) != SUM(committed reservations) ({$actualCommitted})"
-                . " for account={$accountId} metric={$metricCode} period={$periodStart}",
+                ." for account={$accountId} metric={$metricCode} period={$periodStart}",
         );
 
         $this->assertEquals(
             $actualReserved,
             $aggregate->reserved_usage,
             "INV-2: aggregate.reserved_usage ({$aggregate->reserved_usage}) != SUM(pending reservations) ({$actualReserved})"
-                . " for account={$accountId} metric={$metricCode} period={$periodStart}",
+                ." for account={$accountId} metric={$metricCode} period={$periodStart}",
         );
     }
 
@@ -85,8 +85,8 @@ trait AssertsInvariants
             $effectiveLimit,
             $total,
             "INV-3: committed ({$aggregate->committed_usage}) + reserved ({$aggregate->reserved_usage}) = {$total}"
-                . " exceeds effective_limit ({$effectiveLimit})"
-                . " for account={$accountId} metric={$metricCode} period={$periodStart}",
+                ." exceeds effective_limit ({$effectiveLimit})"
+                ." for account={$accountId} metric={$metricCode} period={$periodStart}",
         );
     }
 
@@ -113,7 +113,7 @@ trait AssertsInvariants
             $expectedBalance,
             $account->wallet_balance_cents,
             "INV-4: wallet_balance_cents ({$account->wallet_balance_cents}) != initial_seed ({$initialSeed})"
-                . " + SUM(transactions) ({$ledgerSum}) = {$expectedBalance} for account={$accountId}",
+                ." + SUM(transactions) ({$ledgerSum}) = {$expectedBalance} for account={$accountId}",
         );
     }
 
@@ -138,7 +138,7 @@ trait AssertsInvariants
             0,
             $duplicates,
             'INV-5: Duplicate debit transactions found for idempotency keys: '
-                . $duplicates->pluck('idempotency_key')->implode(', '),
+                .$duplicates->pluck('idempotency_key')->implode(', '),
         );
     }
 
@@ -192,7 +192,7 @@ trait AssertsInvariants
                 $expectedPrice,
                 $overage->total_price_cents,
                 "INV-9: overage total_price_cents ({$overage->total_price_cents}) != "
-                    . "ceil({$overage->overage_amount}/{$unitSize}) * {$unitPrice} = {$expectedPrice}",
+                    ."ceil({$overage->overage_amount}/{$unitSize}) * {$unitPrice} = {$expectedPrice}",
             );
         }
     }
@@ -216,7 +216,7 @@ trait AssertsInvariants
             0,
             $duplicates,
             'INV-12: Duplicate billing_transaction idempotency keys: '
-                . $duplicates->pluck('idempotency_key')->implode(', '),
+                .$duplicates->pluck('idempotency_key')->implode(', '),
         );
     }
 
@@ -276,7 +276,7 @@ trait AssertsInvariants
                     $expected,
                     $txn->balance_after_cents,
                     "INV-15: Transaction #{$txn->id} balance_after_cents ({$txn->balance_after_cents})"
-                        . " != previous ({$previousBalance}) + amount ({$txn->amount_cents}) = {$expected}",
+                        ." != previous ({$previousBalance}) + amount ({$txn->amount_cents}) = {$expected}",
                 );
             }
             $previousBalance = $txn->balance_after_cents;

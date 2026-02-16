@@ -8,7 +8,6 @@ use Moneo\UsageLimiter\Contracts\UsageRepository;
 use Moneo\UsageLimiter\Core\UsageLimiter;
 use Moneo\UsageLimiter\DTOs\UsageAttempt;
 use Moneo\UsageLimiter\Models\UsagePeriodAggregate;
-use Moneo\UsageLimiter\Models\UsageReservation;
 use Moneo\UsageLimiter\Repositories\EloquentUsageRepository;
 use Moneo\UsageLimiter\Tests\Concerns\AssertsInvariants;
 use Moneo\UsageLimiter\Tests\Concerns\CreatesTestFixtures;

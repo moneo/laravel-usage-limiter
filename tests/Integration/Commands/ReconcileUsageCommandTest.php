@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Moneo\UsageLimiter\Tests\Integration\Commands;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use Moneo\UsageLimiter\Core\UsageLimiter;
 use Moneo\UsageLimiter\DTOs\UsageAttempt;

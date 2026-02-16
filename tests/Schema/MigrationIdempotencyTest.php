@@ -20,7 +20,7 @@ class MigrationIdempotencyTest extends TestCase
         // Running migrate:fresh should re-create all tables cleanly.
         Artisan::call('migrate:fresh', [
             '--database' => 'testing',
-            '--path' => realpath(__DIR__ . '/../../database/migrations'),
+            '--path' => realpath(__DIR__.'/../../database/migrations'),
             '--realpath' => true,
         ]);
 
@@ -33,14 +33,14 @@ class MigrationIdempotencyTest extends TestCase
     {
         Artisan::call('migrate:fresh', [
             '--database' => 'testing',
-            '--path' => realpath(__DIR__ . '/../../database/migrations'),
+            '--path' => realpath(__DIR__.'/../../database/migrations'),
             '--realpath' => true,
         ]);
 
         // Running migrate again should succeed (nothing to migrate)
         $exitCode = Artisan::call('migrate', [
             '--database' => 'testing',
-            '--path' => realpath(__DIR__ . '/../../database/migrations'),
+            '--path' => realpath(__DIR__.'/../../database/migrations'),
             '--realpath' => true,
         ]);
 

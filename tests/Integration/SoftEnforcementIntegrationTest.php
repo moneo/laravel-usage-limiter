@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Moneo\UsageLimiter\Tests\Integration;
 
-use Illuminate\Support\Facades\Event;
 use Moneo\UsageLimiter\Core\UsageLimiter;
 use Moneo\UsageLimiter\DTOs\EnforcementDecision;
 use Moneo\UsageLimiter\DTOs\UsageAttempt;
-use Moneo\UsageLimiter\Events\UsageReserved;
 use Moneo\UsageLimiter\Models\UsagePeriodAggregate;
 use Moneo\UsageLimiter\Tests\Concerns\AssertsInvariants;
 use Moneo\UsageLimiter\Tests\Concerns\CreatesTestFixtures;

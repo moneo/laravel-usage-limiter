@@ -74,7 +74,7 @@ class RandomOperationSequenceTest extends TestCase
 
             $this->assertEmpty(
                 $violations,
-                "Invariant violations after batch {$batch}: " . implode('; ', $violations),
+                "Invariant violations after batch {$batch}: ".implode('; ', $violations),
             );
         }
     }
@@ -116,7 +116,7 @@ class RandomOperationSequenceTest extends TestCase
 
                 $this->assertEmpty(
                     $violations,
-                    "Invariant violations for {$metric} after batch {$batch}: " . implode('; ', $violations),
+                    "Invariant violations for {$metric} after batch {$batch}: ".implode('; ', $violations),
                 );
             }
         }
