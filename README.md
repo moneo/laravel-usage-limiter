@@ -6,7 +6,7 @@
 [![PHPStan Level Max](https://img.shields.io/badge/phpstan-level%20max-brightgreen?style=flat-square)](https://phpstan.org/)
 [![PHP Version](https://img.shields.io/packagist/php-v/moneo/laravel-usage-limiter.svg?style=flat-square)](https://packagist.org/packages/moneo/laravel-usage-limiter)
 [![Laravel](https://img.shields.io/badge/laravel-11.x%20|%2012.x-red?style=flat-square&logo=laravel)](https://laravel.com)
-[![License](https://img.shields.io/packagist/l/moneo/laravel-usage-limiter.svg?style=flat-square)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
 **A production grade, metric agnostic usage metering and enforcement engine for Laravel.**
 
